@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEXTER | CONTACT | PUSH | DASHBOARD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --secondary: #ff6b6b;
+            --success: #4CAF50;
+            --danger: #e53e3e;
+            --light: #f8f9ff;
+            --dark: #2d3748;
+            --gray: #718096;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--dark);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--secondary), #ffa726);
+            padding: 30px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .action-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .push-contact-btn {
+            background: linear-gradient(135deg, var(--success), #45a049);
+        }
+        
+        .dev-site-btn {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e7ff;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            background: white;
+        }
+        
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .request-otp-btn {
+            background: linear-gradient(135deg, #38b2ac, #2c7a7b);
+            margin-top: 10px;
+        }
+        
+        .numbers-container {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-top: 20px;
+        }
+        
+        .numbers-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .numbers-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .numbers-container::-webkit-scrollbar-thumb {
+            background: var(--primary);
+        }
+        
+        .number-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .number-info {
+            flex: 1;
+        }
+        
+        .number-info p {
+            margin-bottom: 5px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .phone-number {
+            font-size: 1.2rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .date-added {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .number-actions {
+            margin-left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .delete-btn {
+            background: linear-gradient(135deg, var(--danger), #c53030);
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .status-message {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .success {
+            background: linear-gradient(135deg, #38a169, #48bb78);
+            color: white;
+        }
+        
+        .error {
+            background: linear-gradient(135deg, var(--danger), #fc8181);
+            color: white;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        
+        .spinner {
+            border: 3px solid rgba(102, 126, 234, 0.2);
+            border-radius: 50%;
+            border-top: 3px solid var(--primary);
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading p {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--gray);
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .dev-credit {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .number-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .number-actions {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .delete-btn {
+                width: 100%;
+            }
+            
+            .action-bar {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-address-book"></i> CONTACT PUSH DASHBOARD</h1>
+            <p class="subtitle">Manage your contacts with style and ease</p>
+            <div class="dev-credit">Developed by Dexter</div>
+        </div>
+        
+        <div class="content">
+            <div class="action-bar">
+                <button class="action-btn push-contact-btn" onclick="loadLinkPage()">
+                    <i class="fas fa-paper-plane"></i> PUSH CONTACT
+                </button>
+                <button class="action-btn dev-site-btn" onclick="openDevSite()">
+                    <i class="fas fa-code"></i> DEVELOPER SITE
+                </button>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-plus-circle"></i> Add New Number</h2>
+                <div id="add-message" class="status-message" style="display: none;"></div>
+                <div class="form-group">
+                    <label for="new-number"><i class="fas fa-phone-alt"></i> Phone Number:</label>
+                    <input type="text" id="new-number" placeholder="Enter phone number (e.g., 94789958225)">
+                </div>
+                <button id="request-otp-btn" class="request-otp-btn"><i class="fas fa-sms"></i> Request OTP</button>
+                <div class="form-group">
+                    <label for="otp"><i class="fas fa-key"></i> OTP:</label>
+                    <input type="text" id="otp" placeholder="Enter OTP">
+                </div>
+                <div class="form-group">
+                    <label for="add-password"><i class="fas fa-lock"></i> Password:</label>
+                    <input type="password" id="add-password" placeholder="Enter your secure password">
+                </div>
+                <button id="add-btn"><i class="fas fa-plus"></i> Add Number</button>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-list-ul"></i> All Phone Numbers</h2>
+                <div id="numbers-message" class="status-message" style="display: none;"></div>
+                <div id="loading-numbers" class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading your contacts...</p>
+                </div>
+                <div class="numbers-container">
+                    <div id="numbers-list" class="numbers-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addBtn = document.getElementById('add-btn');
+            const requestOtpBtn = document.getElementById('request-otp-btn');
+            const newNumberInput = document.getElementById('new-number');
+            const otpInput = document.getElementById('otp');
+            const addPasswordInput = document.getElementById('add-password');
+            const addMessage = document.getElementById('add-message');
+            const numbersList = document.getElementById('numbers-list');
+            const numbersMessage = document.getElementById('numbers-message');
+            const loadingNumbers = document.getElementById('loading-numbers');
+            
+            loadNumbers();
+            
+            addBtn.addEventListener('click', addNumber);
+            requestOtpBtn.addEventListener('click', requestOtp);
+            
+            newNumberInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') requestOtp();
+            });
+            
+            otpInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') addNumber();
+            });
+            
+            addPasswordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') addNumber();
+            });
+            
+            window.loadLinkPage = function() {
+                window.location.href = 'pair';
+            };
+            
+            window.openDevSite = function() {
+                window.open('https://dexter-tech-portfolio.vercel.app/', '_blank');
+            };
+            
+            function requestOtp() {
+                const phoneNumber = newNumberInput.value.trim();
+                
+                if (!phoneNumber) {
+                    showMessage(addMessage, '<i class="fas fa-phone-slash"></i> Please enter a phone number', 'error');
+                    newNumberInput.focus();
+                    return;
+                }
+                
+                const originalText = requestOtpBtn.innerHTML;
+                requestOtpBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Requesting OTP...';
+                requestOtpBtn.disabled = true;
+                
+                setTimeout(() => {
+                    fetch(`/code/request-otp?phone_number=${encodeURIComponent(phoneNumber)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            requestOtpBtn.innerHTML = originalText;
+                            requestOtpBtn.disabled = false;
+                            
+                            if (data.status === 'success') {
+                                showMessage(addMessage, `<i class="fas fa-check-circle"></i> ${data.message}`, 'success');
+                                otpInput.focus();
+                            } else {
+                                showMessage(addMessage, `<i class="fas fa-times-circle"></i> ${data.message || 'Failed to request OTP'}`, 'error');
+                            }
+                        })
+                        .catch(error => {
+                            requestOtpBtn.innerHTML = originalText;
+                            requestOtpBtn.disabled = false;
+                            showMessage(addMessage, `<i class="fas fa-exclamation-triangle"></i> Error: ${error.message}`, 'error');
+                        });
+                }, 500);
+            }
+            
+            function addNumber() {
+                const phoneNumber = newNumberInput.value.trim();
+                const otp = otpInput.value.trim();
+                const password = addPasswordInput.value.trim();
+                
+                if (!phoneNumber) {
+                    showMessage(addMessage, '<i class="fas fa-phone-slash"></i> Please enter a phone number', 'error');
+                    newNumberInput.focus();
+                    return;
+                }
+                
+                if (!otp) {
+                    showMessage(addMessage, '<i class="fas fa-key"></i> Please enter the OTP', 'error');
+                    otpInput.focus();
+                    return;
+                }
+                
+                if (!password) {
+                    showMessage(addMessage, '<i class="fas fa-lock-open"></i> Please enter the password', 'error');
+                    addPasswordInput.focus();
+                    return;
+                }
+                
+                const originalText = addBtn.innerHTML;
+                addBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+                addBtn.disabled = true;
+                
+                setTimeout(() => {
+                    fetch(`/code/add-new-number?phone_number=${encodeURIComponent(phoneNumber)}&otp=${encodeURIComponent(otp)}&password=${encodeURIComponent(password)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            addBtn.innerHTML = originalText;
+                            addBtn.disabled = false;
+                            
+                            if (data.status === 'success') {
+                                showMessage(addMessage, `<i class="fas fa-check-circle"></i> ${data.message}`, 'success');
+                                newNumberInput.value = '';
+                                otpInput.value = '';
+                                addPasswordInput.value = '';
+                                loadNumbers();
+                            } else {
+                                showMessage(addMessage, `<i class="fas fa-times-circle"></i> ${data.message || 'Failed to add number'}`, 'error');
+                            }
+                        })
+                        .catch(error => {
+                            addBtn.innerHTML = originalText;
+                            addBtn.disabled = false;
+                            showMessage(addMessage, `<i class="fas fa-exclamation-triangle"></i> Error: ${error.message}`, 'error');
+                        });
+                }, 500);
+            }
+            
+            function loadNumbers() {
+                loadingNumbers.style.display = 'block';
+                numbersList.innerHTML = '';
+                
+                setTimeout(() => {
+                    fetch('/code/get-all-numbers')
+                        .then(response => response.json())
+                        .then(data => {
+                            loadingNumbers.style.display = 'none';
+                            
+                            if (data.status === 'success') {
+                                if (data.data.length === 0) {
+                                    numbersList.innerHTML = `
+                                        <div class="empty-state">
+                                            <h3><i class="far fa-folder-open"></i> No Contacts Yet</h3>
+                                            <p><i class="fas fa-info-circle"></i> Add your first phone number to get started!</p>
+                                        </div>
+                                    `;
+                                    return;
+                                }
+                                
+                                data.data.forEach(number => {
+                                    const numberItem = createNumberItem(number);
+                                    numbersList.appendChild(numberItem);
+                                });
+                            } else {
+                                showMessage(numbersMessage, `<i class="fas fa-exclamation-triangle"></i> ${data.message}`, 'error');
+                            }
+                        })
+                        .catch(error => {
+                            loadingNumbers.style.display = 'none';
+                            showMessage(numbersMessage, `<i class="fas fa-exclamation-triangle"></i> Failed to load numbers: ${error.message}`, 'error');
+                        });
+                }, 500);
+            }
+            
+            function createNumberItem(numberData) {
+                const item = document.createElement('div');
+                item.className = 'number-item';
+                
+                const infoDiv = document.createElement('div');
+                infoDiv.className = 'number-info';
+                
+                const numberPara = document.createElement('p');
+                numberPara.className = 'phone-number';
+                numberPara.innerHTML = `<i class="fas fa-mobile-alt"></i> ${numberData.phone_number}`;
+                
+                const datePara = document.createElement('p');
+                datePara.className = 'date-added';
+                const date = new Date(numberData.created_at);
+                datePara.innerHTML = `<i class="far fa-calendar-alt"></i> Added: ${date.toLocaleString()}`;
+                
+                infoDiv.appendChild(numberPara);
+                infoDiv.appendChild(datePara);
+                
+                const actionsDiv = document.createElement('div');
+                actionsDiv.className = 'number-actions';
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i> Delete';
+                deleteBtn.addEventListener('click', () => deleteNumber(numberData.phone_number));
+                
+                actionsDiv.appendChild(deleteBtn);
+                
+                item.appendChild(infoDiv);
+                item.appendChild(actionsDiv);
+                
+                return item;
+            }
+            
+            function deleteNumber(phoneNumber) {
+                const password = prompt('<i class="fas fa-key"></i> Please enter the password to delete this number:');
+                
+                if (password === null) return;
+                if (!password.trim()) {
+                    showMessage(numbersMessage, '<i class="fas fa-lock-open"></i> Password cannot be empty', 'error');
+                    return;
+                }
+                
+                if (!confirm(`<i class="fas fa-trash-alt"></i> Are you sure you want to delete ${phoneNumber}?`)) {
+                    return;
+                }
+                
+                const tempMessage = document.createElement('div');
+                tempMessage.className = 'status-message';
+                tempMessage.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
+                numbersMessage.parentNode.insertBefore(tempMessage, numbersMessage);
+                numbersMessage.style.display = 'none';
+                
+                setTimeout(() => {
+                    fetch(`/code/delete-number?phone_number=${encodeURIComponent(phoneNumber)}&password=${encodeURIComponent(password)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            tempMessage.remove();
+                            
+                            if (data.status === 'success') {
+                                showMessage(numbersMessage, `<i class="fas fa-check-circle"></i> ${data.message}`, 'success');
+                                loadNumbers();
+                            } else {
+                                showMessage(numbersMessage, `<i class="fas fa-times-circle"></i> ${data.message || 'Failed to delete number'}`, 'error');
+                            }
+                        })
+                        .catch(error => {
+                            tempMessage.remove();
+                            showMessage(numbersMessage, `<i class="fas fa-exclamation-triangle"></i> Error: ${error.message}`, 'error');
+                        });
+                }, 500);
+            }
+            
+            function showMessage(element, message, type) {
+                element.innerHTML = message;
+                element.className = 'status-message ' + type;
+                element.style.display = 'flex';
+                
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
