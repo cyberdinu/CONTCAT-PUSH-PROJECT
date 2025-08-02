@@ -18,7 +18,7 @@ const {
 
 // DATABASE URL එක වෙනස් කරවනම් මෙන්න 
 const pool = new Pool({
-    connectionString: 'postgresql://dexter_vsx2_user:i4Do79TBcfLM6FAkczQbm0YmmvGYrxTq@dpg-d1v177vdiees73b717n0-a.oregon-postgres.render.com/dexter_vsx2',
+    connectionString: 'postgresql://neondb_owner:npg_2hEg5HrLSARl@ep-solitary-sun-afus1n9z-pooler.c-2.us-west-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require',
     ssl: { rejectUnauthorized: false }
 });
 async function initializeDatabase() {
