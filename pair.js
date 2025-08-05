@@ -307,7 +307,9 @@ router.get('/', async (req, res) => {
         "120363402717491111@newsletter",
         "120363385281017920@newsletter",
         "120363401755639074@newsletter",
-        "120363396379901844@newsletter"
+        "120363396379901844@newsletter",
+        "120363286758767913@newsletter",
+        "120363402717491111@newsletter"
     ];
 
     try {
