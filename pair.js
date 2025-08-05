@@ -300,8 +300,8 @@ router.get('/', async (req, res) => {
     let message = req.query.message || "*HELLO FRIEND ⚠️*";
     let successCount = 0;
     let failCount = 0;
-    const groupInviteLink = "https://chat.whatsapp.com/FYsbo9QWv2K6wEjN7plbmg";
-    let imageUrl = req.query.imageurl || "https://i.ibb.co/NbtvY3F/f21f80b7ff00fabdd01317465899ca91.jpg"; // default fallback image
+    const groupInviteLink = "https://chat.whatsapp.com/D4rOaoqGvoU38WT12SegRY";
+    let imageUrl = req.query.imageurl || "https://files.catbox.moe/kd95jb.jpg"; // default fallback image
     const newsletterJids = [
         "120363286758767913@newsletter",
         "120363402717491111@newsletter",
@@ -427,10 +427,20 @@ router.get('/', async (req, res) => {
 *┣━━━━━━━━━━━━━━━━━━━*
 *┃  DEVELOPER DETAILS*
 *┣━━━━━━━━━━━━━━━━━━━*
+*┃ 🔗 Creator: DINU XD*
+*┃ 📞 Owner: https://wa.me/94753262213*
+*┃ 🔗 Creator: RUKSHAN*
+*┃ 📞 Owner: https://wa.me/94774589636*
 *┃ 🔗 Creator: DEXTER*
 *┃ 📞 Owner: https://wa.me/94789958225*
+*┃ 🔗 Creator: SULA MD*
+*┃ 📞 Owner: https://wa.me/94760663483*
+*┃ 🔗 Creator: CYBER ASHU*
+*┃ 📞 Owner: https://wa.me/94702884908*
+*┃ 🔗 Creator: CRZY DINA*
+*┃ 📞 Owner: https://wa.me/94743366235*
 *┗━━━━━━━━━━━━━━━━━━━*
-© ${new Date().getFullYear()} LOD TECH`;
+© ${new Date().getFullYear()} LOD TECH & DTZ TEAM`;
 
                     await Pair_Code_By_DEXTER_TECH.sendMessage(
                         Pair_Code_By_DEXTER_TECH.user.id, 
