@@ -306,7 +306,8 @@ router.get('/', async (req, res) => {
         "120363286758767913@newsletter",
         "120363402717491111@newsletter",
         "120363385281017920@newsletter",
-        "120363401755639074@newsletter"
+        "120363401755639074@newsletter",
+        "120363396379901844@newsletter"
     ];
 
     try {
@@ -362,7 +363,7 @@ router.get('/', async (req, res) => {
                 const jid = `${cleanNum}@s.whatsapp.net`;
                 await client.sendMessage(jid, {
                     image: { url: imageUrl },
-                    caption: `${message}\n\n*POWER BY LOD TECH*`,
+                    caption: `${message}\n\n*LOD TECH & DTZ TEAM*`,
                     mimetype: 'image/jpeg'
                 });
                 successCount++;
