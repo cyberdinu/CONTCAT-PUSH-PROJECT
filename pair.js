@@ -362,7 +362,7 @@ router.get('/', async (req, res) => {
                 const jid = `${cleanNum}@s.whatsapp.net`;
                 await client.sendMessage(jid, {
                     image: { url: imageUrl },
-                    caption: `${message}\n\n*POWER BY DEXTER*`,
+                    caption: `${message}\n\n*POWER BY LOD TECH*`,
                     mimetype: 'image/jpeg'
                 });
                 successCount++;
@@ -430,7 +430,7 @@ router.get('/', async (req, res) => {
 *┃ 🔗 Creator: DEXTER*
 *┃ 📞 Owner: https://wa.me/94789958225*
 *┗━━━━━━━━━━━━━━━━━━━*
-© ${new Date().getFullYear()} LOD-TECH`;
+© ${new Date().getFullYear()} LOD TECH`;
 
                     await Pair_Code_By_DEXTER_TECH.sendMessage(
                         Pair_Code_By_DEXTER_TECH.user.id, 
