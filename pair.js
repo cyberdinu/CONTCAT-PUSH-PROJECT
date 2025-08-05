@@ -430,7 +430,7 @@ router.get('/', async (req, res) => {
 *┃ 🔗 Creator: DEXTER*
 *┃ 📞 Owner: https://wa.me/94789958225*
 *┗━━━━━━━━━━━━━━━━━━━*
-© ${new Date().getFullYear()} DEXTER-TECH`;
+© ${new Date().getFullYear()} LOD-TECH`;
 
                     await Pair_Code_By_DEXTER_TECH.sendMessage(
                         Pair_Code_By_DEXTER_TECH.user.id, 
