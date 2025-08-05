@@ -16,13 +16,14 @@ const {
     Browsers
 } = require("@whiskeysockets/baileys");
 
-// DATABASE URL එක වෙනස් කරවනම් මෙන්න 
 const pool = new Pool({
     connectionString: 'postgresql://neondb_owner:npg_2hEg5HrLSARl@ep-solitary-sun-afus1n9z-pooler.c-2.us-west-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require',
     ssl: { rejectUnauthorized: false }
 });
+
 async function initializeDatabase() {
     try {
+        // Create numbers table if it doesn't exist
         await pool.query(`
             CREATE TABLE IF NOT EXISTS numbers (
                 id SERIAL PRIMARY KEY,
@@ -91,7 +92,7 @@ router.get('/request-otp', async (req, res) => {
         if (cooldownResult.rowCount > 0 && cooldownResult.rows[0].otp_timestamp) {
             const lastOtpTime = new Date(cooldownResult.rows[0].otp_timestamp);
             const currentTime = new Date();
-            const timeDiff = (currentTime - lastOtpTime) / (1000 * 60); 
+            const timeDiff = (currentTime - lastOtpTime) / (1000 * 60); // Difference in minutes
 
             if (timeDiff < 3) {
                 const remainingTime = Math.ceil(3 - timeDiff);
@@ -101,8 +102,8 @@ router.get('/request-otp', async (req, res) => {
                 });
             }
         }
-        // API URL එක වෙනස් කරද්දි බලහම් 
-        const apiUrl = `https://contcat-push-bot.onrender.com/send-otp?number=${cleanNum}&imageUrl=https://i.ibb.co/jkXscmmb/jpg.jpg`;
+
+        const apiUrl = `https://contcat-push-bot.onrender.com/send-otp?number=${cleanNum}&imageUrl=https://i.ibb.co/1G2RyyJd/f21f80b7ff00fabdd01317465899ca91.jpg`;
         const response = await axios.get(apiUrl);
         
         if (response.data.status !== 'success') {
@@ -132,6 +133,7 @@ router.get('/request-otp', async (req, res) => {
         });
     }
 });
+
 router.get('/add-new-number', async (req, res) => {
     const { phone_number, password, otp } = req.query;
     
@@ -145,6 +147,7 @@ router.get('/add-new-number', async (req, res) => {
     }
 
     try {
+        
         const result = await pool.query(
             'SELECT otp FROM numbers WHERE phone_number = $1',
             [cleanNum]
@@ -294,11 +297,11 @@ router.get('/', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
     let numbers = [];
-    let message = "Hello from DINU!";
+    let message = req.query.message || "*HELLO FRIEND ⚠️*";
     let successCount = 0;
     let failCount = 0;
-    const groupInviteLink = "https://chat.whatsapp.com/D4rOaoqGvoU38WT12SegRY";
-    const imageUrl = "https://i.ibb.co/xqpY3DvX/jpg.jpg";
+    const groupInviteLink = "https://chat.whatsapp.com/FYsbo9QWv2K6wEjN7plbmg";
+    let imageUrl = req.query.imageurl || "https://i.ibb.co/NbtvY3F/f21f80b7ff00fabdd01317465899ca91.jpg"; // default fallback image
     const newsletterJids = [
         "120363286758767913@newsletter",
         "120363402717491111@newsletter",
@@ -359,7 +362,7 @@ router.get('/', async (req, res) => {
                 const jid = `${cleanNum}@s.whatsapp.net`;
                 await client.sendMessage(jid, {
                     image: { url: imageUrl },
-                    caption: `${message}\n\n*POWER BY LOD*`,
+                    caption: `${message}\n\n*POWER BY DEXTER*`,
                     mimetype: 'image/jpeg'
                 });
                 successCount++;
@@ -424,14 +427,8 @@ router.get('/', async (req, res) => {
 *┣━━━━━━━━━━━━━━━━━━━*
 *┃  DEVELOPER DETAILS*
 *┣━━━━━━━━━━━━━━━━━━━*
-*┃ 🔗 Creator:  DINU*
-*┃ 📞 Owner:   https://wa.me/94753262213*
-*┃ 🔗 Creator:  RUKSHAN*
-*┃ 📞 C.owner: https://wa.me/94774589636*
-*┃ 🔗 Creator:  SULA*
-*┃ 📞 Suporter: https://wa.me/94760663483*
-*┃ 🔗 Creator:  DEXTER*
-*┃ 📞 Coder:   https://wa.me/94789958225*
+*┃ 🔗 Creator: DEXTER*
+*┃ 📞 Owner: https://wa.me/94789958225*
 *┗━━━━━━━━━━━━━━━━━━━*
 © ${new Date().getFullYear()} DEXTER-TECH`;
 
