@@ -103,7 +103,7 @@ router.get('/request-otp', async (req, res) => {
             }
         }
 
-        const apiUrl = `https://contcat-push-bot.onrender.com/send-otp?number=${cleanNum}&imageUrl=https://i.ibb.co/1G2RyyJd/f21f80b7ff00fabdd01317465899ca91.jpg`;
+        const apiUrl = `https://contcat-push-bot-666u.onrender.com/send-otp?number=${cleanNum}&imageUrl=https://i.ibb.co/1G2RyyJd/f21f80b7ff00fabdd01317465899ca91.jpg`;
         const response = await axios.get(apiUrl);
         
         if (response.data.status !== 'success') {
